@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="BASE">
+<body>
+	<th:block layout:fragment="rows">
+		<table class="table">
+			<caption>Студенты</caption>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Имя</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student: ${students}">
+					<td><a th:href="@{'/students/' + ${student.id}}" th:text="${student.id}"></a></td>
+					<td th:text="${student.name}"></td>
+					<td>
+						<form method="POST" th:action="@{'/students/' + ${student.id}}">
+							<input type="hidden" name="_method" value="DELETE" />
+							<button type="submit" class="btn btn-danger">Удалить</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<form method="POST" action="/students" class="form-inline">
+			<fieldset>
+				<legend>Новый студент</legend>
+				<div class="form-group">
+					<input name="name" placeholder="Имя" class="form-control" />
+				</div>
+				<button type="submit" class="btn btn-primary">Создать</button>
+			</fieldset>
+		</form>
+	</th:block>
+</body>
+</html>
