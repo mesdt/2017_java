@@ -19,9 +19,13 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/** Данная аннотация говорит, что этот класс используется как отдельный компонент-сервис
+	Класс является фасадом для модели приложения
+*/
 @Service
 public class HwJavaServiceImpl implements HwJavaService {
 
+	/** Инъекция зависимости от репозиториев таблиц */
 	@Autowired
 	private StudentRepository studentz;
 
@@ -56,6 +60,7 @@ public class HwJavaServiceImpl implements HwJavaService {
 		return scores;
 	}
 
+	/** Это метод редактирвоания оценок для студента, он выполняется в транзакции */
 	@Override
 	@Transactional
 	public void setScores(Student student, Long[] subjectIds, Integer[] scores) {

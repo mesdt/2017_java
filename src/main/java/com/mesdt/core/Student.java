@@ -11,20 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/** Класс JPA-сущности для таблицы студентов, внутри используются аннотации, которые описывают, как поля класса будут маппиться в реляционную БД */
 @Entity
 @Table(name = "students")
 public class Student implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	/** Это идентификатор записи, генерируется автоматически */
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	/** Имя - непустая уникальная колонка */	
 	@Column(nullable = false, unique = true)
 	private String name;
 
-	// N.B.
+	/** Коллекция оценок студента */
 	@OneToMany(mappedBy = "id.student", cascade = CascadeType.REMOVE)
 	private Collection<Score> scores;
 

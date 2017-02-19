@@ -7,6 +7,7 @@ import com.mesdt.core.Student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/** Интерфейс репозитория для таблицы оценок. Класс репозитория будет сгенерирован автоматически */
 public interface ScoreRepository extends JpaRepository<Score, Score.Id> {
 
 	List<Score> findByIdStudent(Student student);

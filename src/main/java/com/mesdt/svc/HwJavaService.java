@@ -6,6 +6,7 @@ import java.util.Map;
 import com.mesdt.core.Student;
 import com.mesdt.core.Subject;
 
+/** Интерфейс сервиса для создания бизнес-логики */
 public interface HwJavaService {
 
 	Collection<Student> students();

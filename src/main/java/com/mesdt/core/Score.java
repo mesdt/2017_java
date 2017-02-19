@@ -11,15 +11,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/** Это класс JPA-сущности для хранения оценок */
 @Entity
 @Table(name = "scores")
 public class Score implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	/** идентификатор у этой таблицы составной, задается специальным объектом */
 	@EmbeddedId
 	private Id id;
 
+	/** Это непустое поле для хранения собственно баллов */
 	@Column(nullable = false)
 	private Integer score;
 
@@ -47,6 +50,7 @@ public class Score implements Serializable {
 		return String.format("(score %s %d)", id, score);
 	}
 
+	/** Это класс ключа таблицы оценок, он состоит из двух внешних ключей: до таблицы студентов и до таблицы дисциплин */
 	@Embeddable
 	// TODO: override equals(), hashCode()
 	public static class Id implements Serializable {
